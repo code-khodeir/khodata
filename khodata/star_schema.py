@@ -359,8 +359,9 @@ class StarSchemaDDL:
                 'day_name': current_date.strftime('%A'),
                 'is_weekend': current_date.isoweekday() in [6, 7],
                 'is_business_day': current_date.isoweekday() not in [6, 7],
-                'fiscal_year': current_date.year if current_date.month <= 6 else current_date.year + 1,
-                'fiscal_quarter': ((current_date.month + 6) % 12) // 3 + 1,
+                # Fiscal year starting July 1st: Jan-Jun belongs to previous year, Jul-Dec is current year
+                'fiscal_year': current_date.year if current_date.month >= 7 else current_date.year - 1,
+                'fiscal_quarter': ((current_date.month + 6 - 1) % 12) // 3 + 1,
             })
             
             current_date += timedelta(days=1)
