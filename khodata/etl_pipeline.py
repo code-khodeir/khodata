@@ -212,11 +212,12 @@ class RealEstateETL:
         
         return cleaned
     
-    def _transform_property_data(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _transform_property_data(self, df: pd.DataFrame, reference_year: Optional[int] = None) -> pd.DataFrame:
         """Add calculated fields to property data.
         
         Args:
             df: Cleaned property DataFrame
+            reference_year: Reference year for age calculation (defaults to current year)
             
         Returns:
             Transformed DataFrame
@@ -230,8 +231,9 @@ class RealEstateETL:
         # Property age
         if 'year_built' in transformed.columns:
             from datetime import datetime
-            current_year = datetime.now().year
-            transformed['property_age'] = current_year - transformed['year_built']
+            if reference_year is None:
+                reference_year = datetime.now().year
+            transformed['property_age'] = reference_year - transformed['year_built']
         
         return transformed
     

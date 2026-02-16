@@ -2,7 +2,7 @@
 
 import pandas as pd
 import numpy as np
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any
 from datetime import datetime, timedelta
 
 
@@ -52,7 +52,7 @@ class RealEstateAnalytics:
         """
         self.data['campaigns'] = campaigns_df
     
-    def calculate_property_metrics(self) -> Dict[str, any]:
+    def calculate_property_metrics(self) -> Dict[str, Any]:
         """Calculate property-level metrics.
         
         Returns:
@@ -82,7 +82,7 @@ class RealEstateAnalytics:
         
         return metrics
     
-    def calculate_conversion_metrics(self) -> Dict[str, any]:
+    def calculate_conversion_metrics(self) -> Dict[str, Any]:
         """Calculate lead conversion metrics.
         
         Returns:
@@ -120,7 +120,7 @@ class RealEstateAnalytics:
         
         return metrics
     
-    def calculate_marketing_roi(self) -> Dict[str, any]:
+    def calculate_marketing_roi(self) -> Dict[str, Any]:
         """Calculate marketing campaign ROI and performance.
         
         Returns:
@@ -168,7 +168,7 @@ class RealEstateAnalytics:
         
         return metrics
     
-    def calculate_broker_performance(self, broker_id: Optional[str] = None) -> Dict[str, any]:
+    def calculate_broker_performance(self, broker_id: Optional[str] = None) -> Dict[str, Any]:
         """Calculate broker performance metrics.
         
         Args:
