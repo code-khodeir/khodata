@@ -7,7 +7,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="khodata",
     version="0.1.0",
-    author="khodata",
+    author="Khodata Team",
+    author_email="info@khodata.com",
     description="Data intelligence pilot application",
     long_description=long_description,
     long_description_content_type="text/markdown",

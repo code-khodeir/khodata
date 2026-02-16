@@ -15,7 +15,11 @@ class DataAnalyzer:
     """
     
     def __init__(self):
-        """Initialize the DataAnalyzer."""
+        """Initialize the DataAnalyzer.
+        
+        Attributes:
+            data: pandas DataFrame that holds the loaded data. Initially None.
+        """
         self.data = None
         
     def load_data(self, data: Any) -> None:
@@ -72,10 +76,9 @@ class DataAnalyzer:
         }
         
         # Calculate completeness percentage
-        total_values = self.data.size
         missing_values = self.data.isnull().sum().sum()
         quality["completeness_percentage"] = round(
-            ((total_values - missing_values) / total_values) * 100, 2
+            ((quality["total_cells"] - missing_values) / quality["total_cells"]) * 100, 2
         )
         
         return quality
